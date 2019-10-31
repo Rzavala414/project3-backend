@@ -1,5 +1,5 @@
 const router = require("express").Router();
-//TODO:Create five routes to our 
+const models = requrie("../models/index.js")
 //TODO:Make those routes connect to our mongo database
 //TODO:have the data base update when a new game is played
 
