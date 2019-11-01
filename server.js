@@ -1,6 +1,6 @@
 var express = require('express');
 //using express-session to enable session storage for our server
-// var session = require("express-session");
+var session = require("express-session");
 const mongoose = require("mongoose");
 //access for all our routes
 var allRoutes = require('./controllers/allRoutes');
@@ -22,6 +22,7 @@ app.use(cors({
     origin: "http://localhost:3000",
     credentials: true
 }));
+app.use(session({secret:process.env.SESSION_SECRET}))
 
 //allows express to use our routes
 app.use('/', allRoutes)
