@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const gameCardSchema = new Schema({
  gameid: { type: Number, required: true },
+ date: { type: Date, default: Date.now },
  userOne: {type:Schema.Types.ObjectId,ref:"User"},
  userTwo: {type:Schema.Types.ObjectId,ref:"User"},
  hands:[
