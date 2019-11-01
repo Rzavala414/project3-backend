@@ -1,26 +1,36 @@
 const router = require("express").Router();
-const models = requrie("../models/index.js")
-//TODO:Make those routes connect to our mongo database
-//TODO:have the data base update when a new game is played
+// const db = require("../models/index")
 
-router.router("/")
-    .get()
-    .post()
+ router.get("/",function(req,res){
+     res.send("Everything good here at home cap")
+ }).get("/login")
 
-router.router("/signup")
-    .get()
-    .post()
+router.get("/signup",function(req,res){
+    res.send("sign me up")
+})
+router.post("/signup",function(req,res){
+})
+router.get("/profile",function(req,res){
+    res.send("profile ready")
+    
+})
+router.get("/leaderboard",function(req,res){
+    res.send("leaderboard check")
+    
+})
+router.get("/stats",function(req,res){
+    res.send("stats goober")
+    
+})
+router.get("/newgame",function(req,res){
+    res.send("New game??????")
 
-router.router("/profile")
-    .get()
+})
+router.post("/newgame",function(req,res){
 
-router.router("/leaderboard")
-    .get()
+})
+router.put("/newgame",function(req,res){
 
-router.router("/overallstats")
-    .get()
+})
 
-router.router("/newgame")
-    .get()
-    .post()
-    .put()
+module.exports = router;

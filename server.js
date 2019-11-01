@@ -3,14 +3,14 @@ var express = require('express');
 // var session = require("express-session");
 const mongoose = require("mongoose");
 //access for all our routes
-var allRoutes = require('./controllers');
+var allRoutes = require('./controllers/allRoutes');
 const cors = require('cors');
 require('dotenv').config();
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 3000;
-//imports entire controllers folder, we will handle moularization there
+var PORT = process.env.PORT || 3001;
+//imports entire controllers folder, we will handle modularization there
 
 // Requiring our models for syncing
 // var db = require('./models');
@@ -19,12 +19,12 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({
-    origin: ["https://rzavala414.github.io/Project3/", "http://localhost:3000"],
+    origin: "http://localhost:3000",
     credentials: true
 }));
 
 //allows express to use our routes
-// app.usne(allRoutes);
+app.use('/', allRoutes)
 
 
 // Connect to the Mongo DB
