@@ -13,7 +13,8 @@ const router = express.Router();
 const authRoutes = require('./auth');
 const allRoutes = require("./allRoutes.js")
 
-router.get("/",(res,req)=>res.json("hello connected"))
+router.get("/",(res,req)=>res.json("hello, connected"))
+
 router.use('/auth',authRoutes);
 router.use("/allRoutes",allRoutes);
 
