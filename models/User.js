@@ -1,7 +1,7 @@
 //npm package import
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcrypt = ('bcrypt')
+const bcrypt = require('bcrypt')
 
 
 const userSchema = new Schema({
@@ -56,11 +56,11 @@ const userSchema = new Schema({
   ]
 });
 
-const User = mongoose.model("User", userSchema);
 
-userSchema.pre('save', function(next) {
-  userSchema.password = bcrypt.hashSync(userSchema.password, bcrypt.genSaltSync(10), null)
+userSchema.pre('save', function (next) {
+  this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(10), null)
   next();
 });
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;
