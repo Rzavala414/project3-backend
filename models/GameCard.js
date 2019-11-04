@@ -17,7 +17,7 @@ const gameCardSchema = new Schema({
 
      }
  ]
-});
+}); 
 
 const GameCard = mongoose.model("GameCard", gameCardSchema);
 

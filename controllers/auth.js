@@ -16,16 +16,16 @@ router.get('/secret', function (req, res) {
 
 //creates new instance of user
 router.post('/signup', function (req, res) {
-    console.log(req.body)
+    console.log("REQ.BODY ", req.body)
     db.User.create({
         username: req.body.name,
         password: req.body.password,
         email: req.body.email
     }).then(function (newUser) {
-        console.log(newUser)
+        console.log("THIS IS NEW USER ",newUser)
         res.json(newUser);
     }).catch(err => {
-        console.log(err)
+        console.log("This is err ", err)
         res.json(err)
     })
 })
