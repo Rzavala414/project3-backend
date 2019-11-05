@@ -5,6 +5,6 @@ const allRoutes = require("./allRoutes")
 //TODO:Make those routes connect to our mongo database
 //TODO:have the data base update when a new game is played
 router.use("/auth",authRoutes)
-router.use("/",allRoutes)
+router.use("/api",allRoutes)
 
 module.exports = router;

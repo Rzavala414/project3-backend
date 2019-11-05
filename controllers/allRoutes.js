@@ -2,7 +2,7 @@ const router = require("express").Router();
 const db = require("../models");
 const authRoutes = require("./auth");
 
-router.use("/auth", authRoutes);
+// router.use("/auth", authRoutes);
 
 router.get("/profile", function (req, res) {
     console.log('/profile req', req.session)
@@ -13,7 +13,7 @@ router.get("/profile", function (req, res) {
             res.json(user)
         })
     } else {
-        res.redirect('')
+        res.send("NO PRofile loaded")
     }
     //TODO:Win percentages
 });
