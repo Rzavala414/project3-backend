@@ -18,7 +18,7 @@ router.get('/secret', function (req, res) {
 router.post('/signup', function (req, res) {
     console.log("REQ.BODY ", req.body)
     db.User.create({
-        username: req.body.name,
+        username: req.body.username,
         password: req.body.password,
         email: req.body.email
     }).then(function (newUser) {
