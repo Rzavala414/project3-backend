@@ -3,7 +3,7 @@ var express = require('express');
 var session = require("express-session");
 const mongoose = require("mongoose");
 //access for all our routes
-var allRoutes = require('./controllers/allRoutes');
+var routes = require('./controllers');
 const cors = require('cors');
 require('dotenv').config();
 // Sets up the Express App
@@ -22,14 +22,14 @@ app.use(cors({
     origin: "http://localhost:3000",
     credentials: true
 }));
-app.use(session({secret:process.env.SESSION_SECRET}))
+app.use(session({ secret: process.env.SESSION_SECRET }))
 
 //allows express to use our routes
-app.use('/', allRoutes)
+app.use('/', routes)
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cribsmack", { useUnifiedTopology: true, useNewUrlParser: true  });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cribsmack", { useUnifiedTopology: true, useNewUrlParser: true });
 
 app.listen(PORT, function () {
     console.log(`app listening on http://localhost:${PORT}`)
