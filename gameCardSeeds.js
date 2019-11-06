@@ -1,19 +1,19 @@
 const mongoose = require("mongoose");
-const db = require("../models");
+const db = require("./models");
 
 // This file empties the Books collection and inserts the books below
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/gamecard"
+  "mongodb://localhost/cribsmack"
 );
 
 const gameCardSeed = [
     {
     gameid:"1",
     date: 12-31-82,
-    userOne: Dan,
-    userTwo: Chris,
+    userOne: "Dan",
+    userTwo: "Chris",
     userOnePlayAvg:3,
     userOneCountAvg:7,
     userOneCribAvg:3.35,
@@ -110,12 +110,13 @@ const gameCardSeed = [
             userTwoCount:7,
             userTwoCrib:0,
             userTwoTotal:7
-        },
+        }]
+    },
         {
-        gameid:"1",
+        gameid:"2",
         date: 12-31-82,
-        userOne: Rogelio,
-        userTwo: Eric,
+        userOne: "Rogelio",
+        userTwo: "Eric",
         userOnePlayAvg:3,
         userOneCountAvg:7,
         userOneCribAvg:3.35,
@@ -212,12 +213,13 @@ const gameCardSeed = [
             userTwoCount:7,
             userTwoCrib:0,
             userTwoTotal:7
-        },
+        }]
+    },
         {
-        gameid:"1",
+        gameid:"3",
         date: 12-31-82,
-        userOne: Maninatee,
-        userTwo: Sealor,
+        userOne: "Maninatee",
+        userTwo: "Sealor",
         userOnePlayAvg:3,
         userOneCountAvg:7,
         userOneCribAvg:3.35,
@@ -314,12 +316,13 @@ const gameCardSeed = [
                 userTwoCount:7,
                 userTwoCrib:0,
                 userTwoTotal:7
-            },
+            }],
+        },
             {
-            gameid:"1",
+            gameid:"4",
             date: 12-31-82,
-            userOne: Dan,
-            userTwo: Chris,
+            userOne: "Dan",
+            userTwo:"Chris",
             userOnePlayAvg:3,
             userOneCountAvg:7,
             userOneCribAvg:3.35,
@@ -419,11 +422,12 @@ const gameCardSeed = [
             }
     ]
 
-    };
+    }
+]
 
 db.GameCard
   .remove({})
-  .then(() => db.GameCard.collection.insertMany(GameCardseed))
+  .then(() => db.GameCard.collection.insertMany(gameCardSeed))
   .then(data => {
     console.log(data.result.n + " games inserted!");
     process.exit(0);

@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-const db = require("../models");
+const db = require("./models");
 
 // This file empties the Books collection and inserts the books below
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/profile"
+  "mongodb://localhost/cribsmack"
 );
 
 const userSeeds = [
@@ -18,30 +18,18 @@ const userSeeds = [
      countAvg:8.11,
      cribAvg: 4.75,
      skunks: 8,
-     skunked: 2,
-     games: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "GameCard"
-        }
-      ]
-    }
-    {username: "Dan",
+     skunked: 2
+    },
+    {username: "Joe",
      password: "password",
-     email: "dan@dan.com",
+     email: "joe@joe.joe",
      wins: 55,
      losses:45,
      playAvg:3.55,
      countAvg:8.11,
      cribAvg: 4.75,
      skunks: 8,
-     skunked: 2,
-     games: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "GameCard"
-        }
-      ]
+     skunked: 2
     },
     {username: "Chris",
      password: "password",
@@ -52,13 +40,7 @@ const userSeeds = [
      countAvg:7.95,
      cribAvg: 4.0,
      skunks: 1,
-     skunked: 4,
-     games: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "GameCard"
-        }
-      ]
+     skunked: 4
     },
     {username: "Rogelio",
      password: "password",
@@ -69,13 +51,7 @@ const userSeeds = [
      countAvg:7.11,
      cribAvg: 3.75,
      skunks: 1,
-     skunked: 2,
-     games: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "GameCard"
-        }
-      ]
+     skunked: 2
     },
     {username: "Eric",
      password: "password",
@@ -86,13 +62,7 @@ const userSeeds = [
      countAvg:8.01,
      cribAvg: 4.33,
      skunks: 3,
-     skunked: 3,
-     games: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "GameCard"
-        }
-      ]
+     skunked: 3
     }
 ];
 
