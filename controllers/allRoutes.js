@@ -38,15 +38,21 @@ router.get("/leaderboard-skunked", function (req, res) {
     db.Users.find().sort({ "skunked": 1 });
 });
 //TODO: update newgame route to what frontend displays
-router.get("/newgame", function (req, res) {
+router.get("/gamecard", function (req, res) {
     db.GameCard.findOne({ _id: req.body.id }).then(user => {
         res.json(user)
     })
 });
-router.post("/newgame", function (req, res) {
-    db.GameCard.create(req.body).then(gameCard => {
-        res.json(gameCard);
+router.post("/gamecard", function (req, res) {
+    db.GameCard.create(req.body).then(GameCard => {
+        //TODO: Once we have the gamecard with userOne, UserTwo, and Hands array, we can then run the logic again to push those averages to the Users
+        res.json(GameCard);
     })
 });
-
+router.post("/user", function (req, res) {
+    db.User.findOneAndUpdate(req.body).then(User => {
+        //TODO: update User averages and games
+        res.json(User);
+    })
+});
 module.exports = router;
