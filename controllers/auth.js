@@ -14,7 +14,7 @@ router.get('/secret', function (req, res) {
 })
 
 
-//creates new instance of user
+//creates new instance of usernode server,
 router.post('/signup', function (req, res) {
     console.log("REQ.BODY ", req.body)
     db.User.create({
@@ -22,6 +22,16 @@ router.post('/signup', function (req, res) {
         password: req.body.password,
         email: req.body.email,
         //TODO: add rest of user model properties
+        wins: 0,
+        losses:0,
+        playAvg: 0,
+        countAvg: 0,
+        cribAvg: 0,
+        skunks: 0,
+        skunked: 0,
+        games: []
+        
+
     }).then(function (newUser) {
         console.log("THIS IS NEW USER ",newUser)
         res.json(newUser);
