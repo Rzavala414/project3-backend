@@ -46,7 +46,7 @@ router.get("/gamecard", function (req, res) {
 });
 router.post("/gamecard", function (req, res) {
             console.log("gamecard",req.body);
-            // res.json(req.body);
+            res.json(req.body);
     db.GameCard.create({
         //TODO: Once we have the gamecard with userOne, UserTwo, and Hands array, we can then run the logic again to push those averages to the Users
         date:req.body.date,
