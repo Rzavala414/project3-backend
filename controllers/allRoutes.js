@@ -13,9 +13,8 @@ router.get("/profile", function (req, res) {
             res.json(user)
         })
     } else {
-        res.send("NO PRofile loaded")
+        res.send("No Profile loaded")
     }
-    //TODO:Win percentages
 });
 router.get("/leaderboard-win-percentage", function (req, res) {
     //TODO:sor all Users by wins
@@ -25,36 +24,58 @@ router.get("/leaderboard-win-percentage", function (req, res) {
     });
 });
 router.get("/leaderboard-playavg", function (req, res) {
-    //TODO:sort all Users by playavg)
-    db.Users.find().sort({ "playAvg": 1 });
+    db.User.find().sort({ "playAvg": 1 });
 });
 router.get("/leaderboard-countavg", function (req, res) {
-    db.Users.find().sort({ "countAvg": 1 });
+    db.User.find().sort({ "countAvg": 1 });
 });
 router.get("/leaderboard-cribavg", function (req, res) {
-    db.Users.find().sort({ "cribAvg": 1 });
+    db.User.find().sort({ "cribAvg": 1 });
 });
 router.get("/leaderboard-skunks", function (req, res) {
-    db.Users.find().sort({ "skunks": 1 });
+    db.User.find().sort({ "skunks": 1 });
 });
 router.get("/leaderboard-skunked", function (req, res) {
-    db.Users.find().sort({ "skunked": 1 });
+    db.User.find().sort({ "skunked": 1 });
 });
 //TODO: update newgame route to what frontend displays
 router.get("/gamecard", function (req, res) {
-    db.GameCard.findOne({ _id: req.body.id }).then(user => {
+    db.GameCard.findOne({ _id: req.body.id }).sort({date: req.body.date}).then(user => {
         res.json(user)
     })
 });
 router.post("/gamecard", function (req, res) {
-    db.GameCard.create(req.body).then(GameCard => {
+            console.log("gamecard",req.body);
+            res.json(req.body);
+    db.GameCard.create({
         //TODO: Once we have the gamecard with userOne, UserTwo, and Hands array, we can then run the logic again to push those averages to the Users
-        res.json(GameCard);
+        date:req.body.date,
+        userOne:req.body.username,
+        userTwo:req.body.usernameTwo,
+        userOnePlayAverage:req.body.userOnePlayAverage,
+        userOneCountAverage:req.body.userOneCountAverage,
+        userOneCribAverage:req.body.userOneCribAverage,
+        userTwoPlayAverage:req.body.userTwoPlayAverage,
+        userTwoCountAverage:req.body.userTwoCountAverage,
+        userTwoCribAverage:req.body.userTwoCribAverage,
+        hands:req.body.hands
+    }).then(GameCard => {
+            res.json(GameCard);
     })
 });
 router.post("/user", function (req, res) {
-    db.User.findOneAndUpdate(req.body).then(User => {
-        //TODO: update User averages and games
+    console.log("user",req.body)
+    db.User.findOneAndUpdate({
+        // req.body.username,
+        //TODO: Run Math to update User averages and games; run function to calculate overall averages;
+        wins: req.body.wins,
+        loss: req.body.loss,
+        playAvg: req.body.playAvg,
+        countAvg: req.body.countAvg,
+        cribAvg: req.body.cribAvg,
+        skunks: req.body.skunks,
+        skunked: req.body.skunked
+    }).then(User => {
         res.json(User);
     })
 });

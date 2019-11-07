@@ -1,11 +1,18 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+//TODO: do we add userTwo as a reference???
 const gameCardSchema = new Schema({
- gameid: { type: Number, required: true },
  date: { type: Date, default: Date.now },
  userOne: {type:Schema.Types.ObjectId,ref:"User"},
  userTwo: {type:Schema.Types.ObjectId,ref:"User"},
+ userOnePlayAverage:Number,
+ userOnePlayAverage:Number,
+ userOneCountAverage:Number,
+ userOneCribAverage:Number,
+ userTwoPlayAverage: Number,
+ userTwoCountAverage:Number,
+ userTwoCribAverage:Number,
  hands:[
      {
          userOnePlay:Number,

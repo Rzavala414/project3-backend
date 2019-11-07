@@ -21,7 +21,6 @@ router.post('/signup', function (req, res) {
         username: req.body.username,
         password: req.body.password,
         email: req.body.email,
-        //TODO: add rest of user model properties
         wins: 0,
         losses:0,
         playAvg: 0,
@@ -63,7 +62,7 @@ router.post('/login', function (req, res) {
             else {
                 //delete existing user, add error
                 req.session.user = false;
-                req.session.error = 'auth failed bro';
+                req.session.error = 'Login Error';
                 res.status(401).send("password incorrect");
             }
         }
