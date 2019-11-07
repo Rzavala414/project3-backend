@@ -8,7 +8,8 @@ router.get("/profile", function (req, res) {
     console.log('/profile req', req.session)
     //   db.Users.session.findOne({"win-percentage":1});
     if (req.session.user) {
-        db.Users.findOne({ _id: req.session.user.id }).then(function(user){
+
+        db.User.findOne({ _id: req.session.user.id }).then(function(user){
             res.json(user)
         })
     } else {
@@ -16,22 +17,26 @@ router.get("/profile", function (req, res) {
     }
 });
 router.get("/leaderboard-win-percentage", function (req, res) {
-    db.Users.find().sort({ "win-percentage": 1 });
+    //TODO:sor all Users by wins
+    db.User.find().sort({ "wins": -1 }).then(dbUsers=>{
+        res.json(dbUsers)
+        console.log(dbUsers)
+    });
 });
 router.get("/leaderboard-playavg", function (req, res) {
-    db.Users.find().sort({ "playAvg": 1 });
+    db.User.find().sort({ "playAvg": 1 });
 });
 router.get("/leaderboard-countavg", function (req, res) {
-    db.Users.find().sort({ "countAvg": 1 });
+    db.User.find().sort({ "countAvg": 1 });
 });
 router.get("/leaderboard-cribavg", function (req, res) {
-    db.Users.find().sort({ "cribAvg": 1 });
+    db.User.find().sort({ "cribAvg": 1 });
 });
 router.get("/leaderboard-skunks", function (req, res) {
-    db.Users.find().sort({ "skunks": 1 });
+    db.User.find().sort({ "skunks": 1 });
 });
 router.get("/leaderboard-skunked", function (req, res) {
-    db.Users.find().sort({ "skunked": 1 });
+    db.User.find().sort({ "skunked": 1 });
 });
 //TODO: update newgame route to what frontend displays
 router.get("/gamecard", function (req, res) {
