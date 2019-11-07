@@ -28,6 +28,10 @@ const userSchema = new Schema({
     type: Number,
     // required: true,
   },
+  winsPercentage: {
+    type: Number,
+    // required: true,
+  },
   playAvg: {
     type: Number,
     // required: true,
