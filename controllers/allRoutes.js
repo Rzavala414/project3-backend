@@ -40,7 +40,7 @@ router.get("/gamecard", function (req, res) {
     })
 });
 router.post("/gamecard", function (req, res) {
-            console.log(req.body);
+            console.log("gamecard",req.body);
             // res.json(req.body);
     db.GameCard.create({
         //TODO: Once we have the gamecard with userOne, UserTwo, and Hands array, we can then run the logic again to push those averages to the Users
@@ -59,7 +59,7 @@ router.post("/gamecard", function (req, res) {
     })
 });
 router.post("/user", function (req, res) {
-    console.log(req.body)
+    console.log("user",req.body)
     db.User.findOneAndUpdate(
         // req.body.username,
         //TODO: Run Math to update User averages and games; run function to calculate overall averages;
