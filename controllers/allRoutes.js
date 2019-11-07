@@ -9,7 +9,7 @@ router.get("/profile", function (req, res) {
     //   db.Users.session.findOne({"win-percentage":1});
     if (req.session.user) {
 
-        db.Users.findOne({ _id: req.session.user.id }).then(function(user){
+        db.User.findOne({ _id: req.session.user.id }).then(function(user){
             res.json(user)
         })
     } else {
@@ -19,7 +19,10 @@ router.get("/profile", function (req, res) {
 });
 router.get("/leaderboard-win-percentage", function (req, res) {
     //TODO:sor all Users by wins
-    db.Users.find().sort({ "win-percentage": 1 });
+    db.User.find().sort({ "wins": -1 }).then(dbUsers=>{
+        res.json(dbUsers)
+        console.log(dbUsers)
+    });
 });
 router.get("/leaderboard-playavg", function (req, res) {
     //TODO:sort all Users by playavg)
