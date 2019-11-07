@@ -2,7 +2,7 @@ const router = require("express").Router();
 const db = require("../models");
 const authRoutes = require("./auth");
 
-// router.use("/auth", authRoutes);
+
 
 router.get("/profile", function (req, res) {
     console.log('/profile req', req.session)
@@ -15,27 +15,39 @@ router.get("/profile", function (req, res) {
     } else {
         res.send("NO PRofile loaded")
     }
-    //TODO:Win percentages
 });
+
 router.get("/leaderboard-win-percentage", function (req, res) {
-    //TODO:sor all Users by wins
+    //sorts all Users by wins
     db.User.find().sort({ "wins": -1 }).then(dbUsers=>{
         res.json(dbUsers)
         console.log(dbUsers)
     });
 });
 router.get("/leaderboard-playavg", function (req, res) {
-    //TODO:sort all Users by playavg)
-    db.Users.find().sort({ "playAvg": 1 });
+    //sort all Users by playavg)
+    db.User.find().sort({ "playAvg": -1 }).then(dbUsers=>{
+        res.json(dbUsers)
+        console.log(dbUsers)
+    });
 });
 router.get("/leaderboard-countavg", function (req, res) {
-    db.Users.find().sort({ "countAvg": 1 });
+    db.User.find().sort({ "countAvg": -1 }).then(dbUsers=>{
+        res.json(dbUsers)
+        console.log(dbUsers)
+    });
 });
 router.get("/leaderboard-cribavg", function (req, res) {
-    db.Users.find().sort({ "cribAvg": 1 });
+    db.User.find().sort({ "cribAvg": -1 }).then(dbUsers=>{
+        res.json(dbUsers)
+        console.log(dbUsers)
+    });
 });
 router.get("/leaderboard-skunks", function (req, res) {
-    db.Users.find().sort({ "skunks": 1 });
+    db.User.find().sort({ "skunks": -1 }).then(dbUsers=>{
+        res.json(dbUsers)
+        console.log(dbUsers)
+    });
 });
 router.get("/leaderboard-skunked", function (req, res) {
     db.Users.find().sort({ "skunked": 1 });
@@ -44,7 +56,7 @@ router.get("/leaderboard-skunked", function (req, res) {
 router.get("/gamecard", function (req, res) {
     db.GameCard.findOne({ _id: req.body.id }).then(user => {
         res.json(user)
-    })
+    });
 });
 router.post("/gamecard", function (req, res) {
     db.GameCard.create(req.body).then(GameCard => {
