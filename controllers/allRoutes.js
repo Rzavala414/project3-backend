@@ -60,17 +60,17 @@ router.post("/gamecard", function (req, res) {
 });
 router.post("/user", function (req, res) {
     console.log("user",req.body)
-    db.User.findOneAndUpdate(
+    db.User.findOneAndUpdate({
         // req.body.username,
         //TODO: Run Math to update User averages and games; run function to calculate overall averages;
-        req.body.win,
-        req.body.loss,
-        req.body.playAvg,
-        req.body.countAvg,
-        req.body.cribAvg,
-        req.body.skunks,
-        req.body.skunked
-        ).then(User => {
+        wins: req.body.wins,
+        loss: req.body.loss,
+        playAvg: req.body.playAvg,
+        countAvg: req.body.countAvg,
+        cribAvg: req.body.cribAvg,
+        skunks: req.body.skunks,
+        skunked: req.body.skunked
+    }).then(User => {
         res.json(User);
     })
 });
