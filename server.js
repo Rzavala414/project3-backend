@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cribsmack", { u
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: "https://cribsmack.herokuapp.com/",
     credentials: true
 }));
 app.use(session({ secret: process.env.SESSION_SECRET }))
