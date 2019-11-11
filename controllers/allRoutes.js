@@ -3,7 +3,6 @@ const db = require("../models");
 const authRoutes = require("./auth");
 
 
-
 router.get("/profile", function (req, res) {
     console.log('/profile req', req.session)
     if (req.session.user) {
@@ -64,7 +63,7 @@ router.get("/leaderboard-skunked", function (req, res) {
     });
 });
 
-//update newgame route to what frontend displays
+
 router.get("/gamecard", function (req, res) {
     db.GameCard.findOne({ _id: req.body.id }).sort({date: req.body.date}).then(user => {
         res.json(user)
@@ -105,4 +104,11 @@ router.post("/user", function (req, res) {
         res.json(User);
     })
 });
+
+router.get("/user", function (req, res) {
+    console.log("user",req.body)
+    db.User.find()
+
+})
+
 module.exports = router;
