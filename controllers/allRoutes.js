@@ -3,12 +3,11 @@ const db = require("../models");
 const authRoutes = require("./auth");
 
 
-
 router.get("/profile", function (req, res) {
     console.log('/profile req', req.session)
     if (req.session.user) {
 
-        db.User.findOne({ _id: req.session.user.id }).then(function(user){
+        db.User.findOne({ _id: req.session.user.id }).limit(5).then(function(user){
             res.json(user)
         })
     } else {
@@ -18,7 +17,7 @@ router.get("/profile", function (req, res) {
 
 //sorts all Users by wins
 router.get("/leaderboard-win-percentage", function (req, res) {
-    db.User.find().sort({ "wins": -1 }).then(dbUsers=>{
+    db.User.find().sort({ "wins": -1 }).limit(5).then(dbUsers=>{
         res.json(dbUsers)
         console.log(dbUsers)
     });
@@ -26,7 +25,7 @@ router.get("/leaderboard-win-percentage", function (req, res) {
 
 // sorts Users by Play Average
 router.get("/leaderboard-playavg", function (req, res) {
-    db.User.find().sort({ "playAvg": -1 }).then(dbUsers=>{
+    db.User.find().sort({ "playAvg": -1 }).limit(5).then(dbUsers=>{
         res.json(dbUsers)
         console.log(dbUsers)
     });
@@ -34,7 +33,7 @@ router.get("/leaderboard-playavg", function (req, res) {
 
 //sorts all Users by Count Average
 router.get("/leaderboard-countavg", function (req, res) {
-    db.User.find().sort({ "countAvg": -1 }).then(dbUsers=>{
+    db.User.find().sort({ "countAvg": -1 }).limit(5).then(dbUsers=>{
         res.json(dbUsers)
         console.log(dbUsers)
     });
@@ -42,7 +41,7 @@ router.get("/leaderboard-countavg", function (req, res) {
 
 // Sorts all Users by crib Average
 router.get("/leaderboard-cribavg", function (req, res) {
-    db.User.find().sort({ "cribAvg": -1 }).then(dbUsers=>{
+    db.User.find().sort({ "cribAvg": -1 }).limit(5).then(dbUsers=>{
         res.json(dbUsers)
         console.log(dbUsers)
     });
@@ -50,7 +49,7 @@ router.get("/leaderboard-cribavg", function (req, res) {
 
 // Sorts all users by Skunks 
 router.get("/leaderboard-skunks", function (req, res) {
-    db.User.find().sort({ "skunks": -1 }).then(dbUsers=>{
+    db.User.find().sort({ "skunks": -1 }).limit(5).then(dbUsers=>{
         res.json(dbUsers)
         console.log(dbUsers)
     });
@@ -58,13 +57,13 @@ router.get("/leaderboard-skunks", function (req, res) {
 
 // Sorts all users by how many times they've been skunked
 router.get("/leaderboard-skunked", function (req, res) {
-    db.User.find().sort({ "skunked": -1 }).then(dbUsers=>{
+    db.User.find().sort({ "skunked": -1 }).limit(5).then(dbUsers=>{
         res.json(dbUsers)
         console.log(dbUsers)
     });
 });
 
-//update newgame route to what frontend displays
+
 router.get("/gamecard", function (req, res) {
     db.GameCard.findOne({ _id: req.body.id }).sort({date: req.body.date}).then(user => {
         res.json(user)
@@ -105,4 +104,11 @@ router.post("/user", function (req, res) {
         res.json(User);
     })
 });
+
+router.get("/user", function (req, res) {
+    console.log("user",req.body)
+    db.User.find()
+
+})
+
 module.exports = router;
