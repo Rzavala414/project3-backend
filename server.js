@@ -39,7 +39,7 @@ app.use('/', routes)
 
 
 // Connect to the Mongo DB
-mongoose.connect(MONGODB_URI)
+
 app.listen(PORT, function () {
-    console.log(`app listening on http://localhost:${PORT}`)
+    console.log(`app listening on ${PORT}`)
 })
