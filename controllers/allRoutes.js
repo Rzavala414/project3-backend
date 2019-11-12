@@ -3,7 +3,7 @@ const db = require("../models");
 const authRoutes = require("./auth");
 
 
-router.get("/profile", function (req, res) {
+router.get("/login", function (req, res) {
     console.log('/profile req', req.session)
     if (req.session.user) {
 
