@@ -29,7 +29,8 @@ app.use(cors({
     origin: "https://cribsmack.herokuapp.com/",
     credentials: true
 }));
-app.use(session({ secret: process.env.SESSION_SECRET }))
+// app.use(cors());
+app.use(session({ secret: process.env.SESSION_SECRET }));
 
 //allows express to use our routes
 // app.get("/test", (req,res)=>res.send("connected"))
