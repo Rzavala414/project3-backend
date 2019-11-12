@@ -18,7 +18,7 @@ var PORT = process.env.PORT || 3001;
 // offline Testing for  local machine 
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cribsmack", { useUnifiedTopology: true, useNewUrlParser: true });
 // online Deployment
-mongoose.connect(process.env.MONGODB_URI || "mongodb:  https://cribsmack-be.herokuapp.com/", { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb:localhost/mongoHeadlines", { useUnifiedTopology: true, useNewUrlParser: true });
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -39,7 +39,7 @@ app.use('/', routes)
 
 
 // Connect to the Mongo DB
-
+mongoose.connect(MONGODB_URI)
 app.listen(PORT, function () {
     console.log(`app listening on http://localhost:${PORT}`)
 })
