@@ -26,7 +26,7 @@ app.use(cors({
     // offline Testing for  local machine 
     // origin: "http://localhost:3000",
     // online Deployment
-    origin: "https://cribsmack.herokuapp.com/",
+    origin: "https://cribsmack.herokuapp.com",
     credentials: true
 }));
 // app.use(cors());
