@@ -19,11 +19,13 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb:https://cribsmack-be.heroku
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({
-    origin: "https://cribsmack.herokuapp.com/",
-    credentials: true
-}));
-app.use(session({ secret: process.env.SESSION_SECRET }))
+// app.use(cors({
+//     origin: "https://cribsmack.herokuapp.com/",
+//     // origin: "https:localhost:3000",
+//     credentials: true
+// }));
+app.use(cors());
+app.use(session({ secret: process.env.SESSION_SECRET }));
 
 //allows express to use our routes
 // app.get("/test", (req,res)=>res.send("connected"))
