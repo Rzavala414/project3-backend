@@ -4,7 +4,7 @@ After thirty-plus years of keeping score of Cribbage matches on notepads and exc
 ---
 
 ### Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+Please see the fully depoloyed version on Heroku (https://cribsmack.herokuapp.com/).  You may also clone a copy of the project up and running on your local machine for development and testing purposes. There are two repositories, one back-end (https://github.com/Rzavala414/project3-backend) and one front-end (https://github.com/Rzavala414/Project3).   
 ---
 
 ### Installing
